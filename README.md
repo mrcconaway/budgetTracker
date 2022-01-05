@@ -1,2 +1,2 @@
 # budgetTracker
- Side Project -- A simple budget tracker written in cpp
+A simple budget tracker side project written in cpp
