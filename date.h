@@ -15,6 +15,14 @@ public:
     void setDay(int input);
     void setYear(int input);
 
+    date operator+(const date& d){
+        date tmp;
+        tmp.m = this->m;
+        tmp.d = this->d;
+        tmp.y = this->y;
+        return tmp;
+    }
+
 private:
     month m;
     int d;
