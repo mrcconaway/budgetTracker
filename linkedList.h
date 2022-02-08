@@ -6,6 +6,8 @@
 
 class linkedList
 {
+public: 
+    linkedList();
 public:
     // list manipulation 
     size_t list_length(const node* head_ptr);
@@ -24,6 +26,12 @@ public:
     // copy a list
     void list_copy(const node* source_ptr, node*& head_ptr, node*& tail_ptr);
 
+public: // The Big 3! 
+    ~linkedList(); // Deconstructor
+    linkedList(const linkedList& other); // Constructor
+    linkedList& operator =(const linkedList& other);
+
+
 private:
-    node list;
+    node* head;
 };
