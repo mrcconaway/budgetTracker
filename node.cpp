@@ -4,9 +4,9 @@
 
 // BIG 3! // 
 
-node::node(node* nInit = nullptr, node* pInit = nullptr, float a = 0.0, DATE d = DATE())
-{
-    next = nInit;
-    prev = pInit;
+// node::node(node* nInit = nullptr, node* pInit = nullptr)
+// {
+//     next = nInit;
+//     prev = pInit;
 
-}
+// }

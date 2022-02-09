@@ -3,15 +3,16 @@
 #include <cstdlib>
 #include "date.h"
 #include "month.h"
+#include "budget.h"
 
 class node
 {
 public:
-    node(node* n = nullptr, node* p = nullptr, float a = 0.0, DATE d = DATE());
+    // node(node* nInit = nullptr, node* pInit = nullptr);
     
 
 private:
-    BUDGET budget;
+    // BUDGET budget;
 private:
     node* next;
     node* prev;
