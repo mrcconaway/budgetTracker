@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include "date.h"
 #include "CATEGORY.h"
 
@@ -17,7 +18,38 @@ public:
     const DATE get_date(){ return d; }
     const CATEGORY get_category(){ return c; }
 
-    const void display(){std::cout << amount << " "; d.display(); std::cout <<  c << std::endl; }
+    const std::string display_category(){
+        std::string c_str;
+        switch(get_category()){
+            default: 
+                c_str = "UNKOWN";
+                break;
+            case GROCERY:
+                c_str = "GROCERY";
+                break;
+            case GAS:
+                c_str = "GAS";
+                break;
+            case ENTERTAINMENT:
+                c_str = "ENTERTAINMENT";
+                break;
+            case UTILITIES:
+                c_str = "UTILITIES";
+                break;
+            case SAVING:
+                c_str = "SAVING";
+                break;
+            case HOUSING:
+                c_str = "HOUSING";
+                break;
+        }
+        return c_str;
+    } 
+
+    const void display(){
+        std::cout << "$" << amount << "\n";
+        d.display(); 
+        std::cout << "\n" << display_category() << std::endl; }
 
 private:
     float amount;

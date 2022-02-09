@@ -7,5 +7,6 @@ enum CATEGORY
     ENTERTAINMENT,
     UTILITIES,
     SAVING,
-    HOUSING
+    HOUSING,
+    UNKNOWN
 };
