@@ -11,9 +11,7 @@ public:
     
 
 private:
-    float amount;
-    DATE date;
-    CATEGORY category;
+    BUDGET budget;
 private:
     node* next;
     node* prev;

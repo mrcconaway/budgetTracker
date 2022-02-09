@@ -8,6 +8,5 @@ node::node(node* nInit = nullptr, node* pInit = nullptr, float a = 0.0, DATE d =
 {
     next = nInit;
     prev = pInit;
-    amount = a;
-    date = d;
+
 }
