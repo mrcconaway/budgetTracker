@@ -1,23 +1,15 @@
+#pragma once
+
 #include <iostream>
 #include "month.h"
 
 
-class date
+class DATE
 {
 public: // BIG 3! 
     // constructor
-    date(int y = 0, int d = 0, MONTH m = NONE){ year = y; day = d; month = m; }
+    DATE(int y = 0, int d = 0, MONTH m = NONE){ year = y; day = d; month = m; }
     
-    // copy constructor
-    // date& operator =(const date& other){
-    //     if(this == &other){
-    //         return this;
-    //     }
-    //     month = other.month;
-    //     day = other.day;
-    //     year = other.year;
-    //     return this;
-    // }
     
 public:
     // mutator
