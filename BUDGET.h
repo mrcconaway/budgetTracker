@@ -56,7 +56,7 @@ public:
     void output(std::ostream& outs)const{
         outs << "$" << amount << "\n";
         d.output(outs); 
-        outs << "\n" << display_category() << "\n\n"; 
+        outs << "\n" << display_category() << "\n"; 
         return; }
 
 private:
