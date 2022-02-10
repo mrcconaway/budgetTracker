@@ -46,9 +46,9 @@ public:
         return c_str;
     } 
 
-    const void display(std::ostream& outs){
+    const void output(std::ostream& outs){
         outs << "$" << amount << "\n";
-        d.display(outs); 
+        d.output(outs); 
         outs << "\n" << display_category() << "\n\n"; 
         return; }
 
