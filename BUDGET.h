@@ -8,6 +8,13 @@
 class BUDGET
 {
 public:
+    BUDGET(float aInit = 0, DATE dInit = DATE(), CATEGORY cInit = UNKNOWN  ){
+        set_amount(aInit);
+        set_date(dInit);
+        set_category(cInit);
+    }
+
+public:
     // mutators
     void set_amount(float inp){ amount = inp; }
     void set_date(DATE inp){ d = inp; }
