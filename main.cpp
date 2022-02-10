@@ -8,7 +8,6 @@
 int main()
 {
     
-    node* head;
 
     return 1;
 }
