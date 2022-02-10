@@ -7,8 +7,15 @@
 
 class list
 {
-public: // BIG 3
+public:
     list();
+public: // BIG 3
+    ~list();
+    list(const list& other);
+    list& operator =(const list& other);
+
+public:
+
 
 private:
     node* head;

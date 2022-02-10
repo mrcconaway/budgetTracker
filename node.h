@@ -9,23 +9,25 @@ class node
 public:
     node(BUDGET bInit = BUDGET(), node* nInit = nullptr, node* pInit = nullptr){
         budget = bInit;
-        next = nInit;
-        prev = pInit;
+        nfield = nInit;
+        pfield = pInit;
     }
 public:
     //Accessors
     const BUDGET data(){ return budget; }
-    const node* nLink(){ return next; }
-    const node* pLink(){ return prev; }
+    const node* next()const { return nfield; }
+    const node* prev()const { return pfield; }  
+    node* next(){ return nfield; }
+    node* prev(){ return pfield; } 
 
 public:
     // Mutators
     void set_data(BUDGET binp){ budget = binp; }
-    void set_nLink(node* ninp){ next = ninp; }
-    void set_pLink(node* pinp){ prev = pinp;}
+    void set_next(node* ninp){ nfield = ninp; }
+    void set_prev(node* pinp){ pfield = pinp;}
 
 private:
     BUDGET budget;  
-    node* next;
-    node* prev;
+    node* nfield;
+    node* pfield;
 };

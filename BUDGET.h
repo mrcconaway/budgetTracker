@@ -8,7 +8,7 @@
 class BUDGET
 {
 public:
-    BUDGET(float aInit = 0, DATE dInit = DATE(), CATEGORY cInit = UNKNOWN  ){
+    BUDGET(float aInit = 0 , DATE dInit = DATE(), CATEGORY cInit = UNKNOWN  ){
         set_amount(aInit);
         set_date(dInit);
         set_category(cInit);
