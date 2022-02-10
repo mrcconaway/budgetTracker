@@ -18,11 +18,11 @@ public:
     void set_month(MONTH m){ month = m; }
 
     // accessor
-    const int get_day(){ return day; }
-    const int get_year(){ return year; }
-    const MONTH get_month(){ return month; }
+    const int get_day()const { return day; }
+    const int get_year()const { return year; }
+    const MONTH get_month()const { return month; }
     
-    void output(std::ostream& outs){
+    void output(std::ostream& outs)const{
         outs << std::setw(2) << std::setfill('0') << get_month() << "/";
         outs << std::setw(2) << std::setfill('0') << get_day() << "/";
         outs << std::setw(2) << std::setfill('0') << get_year() << " ";
@@ -34,3 +34,7 @@ private:
     int day;
     MONTH month;
 };
+inline std::ostream& operator <<(std::ostream& out, const DATE& d){
+    d.output(out);
+    return out;
+}

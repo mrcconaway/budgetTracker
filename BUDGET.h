@@ -21,11 +21,11 @@ public:
     void set_category(CATEGORY inp){ c = inp; }
 
     // accessors
-    const float get_amount(){ return amount; }
-    const DATE get_date(){ return d; }
-    const CATEGORY get_category(){ return c; }
+    const float get_amount()const { return amount; }
+    const DATE get_date()const { return d; }
+    const CATEGORY get_category()const { return c; }
 
-    const std::string display_category(){
+    const std::string display_category()const {
         std::string c_str;
         switch(get_category()){
             default: 
@@ -53,7 +53,7 @@ public:
         return c_str;
     } 
 
-    const void output(std::ostream& outs){
+    void output(std::ostream& outs)const{
         outs << "$" << amount << "\n";
         d.output(outs); 
         outs << "\n" << display_category() << "\n\n"; 
@@ -66,3 +66,7 @@ private:
 };
 
 
+inline std::ostream& operator <<(std::ostream& out, const BUDGET& b){
+    b.output(out);
+    return out;
+}

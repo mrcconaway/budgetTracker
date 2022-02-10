@@ -75,3 +75,30 @@ list& list::operator =(const list& other)
     }
     return *this;
 }
+
+
+void list::add_item(BUDGET binp)
+{
+    if(head == nullptr){
+        head = new node(binp);
+    }
+    else{
+        node* cursor = head;
+        while(cursor-> next() != nullptr){
+            cursor = cursor->next();
+        }
+        cursor->set_next( new node(binp, nullptr, cursor) );
+    }
+}
+
+
+
+
+void list::display()const
+{
+    const node* ptr = head;
+    while( ptr != nullptr){
+        std::cout << ptr->data() << std::endl;
+         ptr = ptr->next();
+    }
+}
