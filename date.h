@@ -23,9 +23,9 @@ public:
     const MONTH get_month(){ return month; }
     
     void display(){
+        std::cout << std::setw(2) << std::setfill('0') << get_month() << "/";
         std::cout << std::setw(2) << std::setfill('0') << get_day() << "/";
-        std::cout << std::setw(2) << std::setfill('0') << get_year() << "/";
-        std::cout << get_month() << " ";
+        std::cout << std::setw(2) << std::setfill('0') << get_year() << " ";
     }
 
 private:

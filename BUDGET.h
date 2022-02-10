@@ -49,7 +49,7 @@ public:
     const void display(){
         std::cout << "$" << amount << "\n";
         d.display(); 
-        std::cout << "\n" << display_category() << std::endl; }
+        std::cout << "\n" << display_category() << "\n" << std::endl; }
 
 private:
     float amount;

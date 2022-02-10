@@ -14,5 +14,17 @@ int main()
 
     t1.display();
 
+    BUDGET t2;
+    t2.display();
+    t2 = t1;
+    t2.display();
+
+    BUDGET t3;
+    d1.set_year(22);
+    t3.set_amount(200.00);
+    t3.set_category(GAS);
+    t3.set_date(d1);
+    t3.display();
+
     return 1;
 }
