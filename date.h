@@ -22,10 +22,11 @@ public:
     const int get_year(){ return year; }
     const MONTH get_month(){ return month; }
     
-    void display(){
-        std::cout << std::setw(2) << std::setfill('0') << get_month() << "/";
-        std::cout << std::setw(2) << std::setfill('0') << get_day() << "/";
-        std::cout << std::setw(2) << std::setfill('0') << get_year() << " ";
+    void display(std::ostream& outs){
+        outs << std::setw(2) << std::setfill('0') << get_month() << "/";
+        outs << std::setw(2) << std::setfill('0') << get_day() << "/";
+        outs << std::setw(2) << std::setfill('0') << get_year() << " ";
+        return;
     }
 
 private:

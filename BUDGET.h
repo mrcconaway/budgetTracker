@@ -46,10 +46,11 @@ public:
         return c_str;
     } 
 
-    const void display(){
-        std::cout << "$" << amount << "\n";
-        d.display(); 
-        std::cout << "\n" << display_category() << "\n" << std::endl; }
+    const void display(std::ostream& outs){
+        outs << "$" << amount << "\n";
+        d.display(outs); 
+        outs << "\n" << display_category() << "\n\n"; 
+        return; }
 
 private:
     float amount;
