@@ -105,9 +105,10 @@ void list::remove(BUDGET target)
     if(head->data() == target){
         node* rmptr = head;
         head = head->next();
+        delete rmptr;
     }
     else{
-        while( forward != nullptr && forward->data() != target){
+        while( forward != nullptr && !(forward->data() == target)){
             backward = forward;
             forward = forward->next();
         }

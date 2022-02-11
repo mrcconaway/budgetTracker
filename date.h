@@ -29,6 +29,9 @@ public:
         return;
     }
 
+public:
+    bool operator == (const DATE& d2)const;
+
 private:
     int year;
     int day;
@@ -37,4 +40,7 @@ private:
 inline std::ostream& operator <<(std::ostream& out, const DATE& d){
     d.output(out);
     return out;
+}
+inline bool DATE::operator ==(const DATE& d2)const {
+    return ( (year == d2.year) && (day == d2.day) && (month == d2.month) );
 }

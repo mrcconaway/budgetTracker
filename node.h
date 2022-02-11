@@ -15,6 +15,7 @@ public:
 public:
     //Accessors
     const BUDGET data()const { return budget; }
+    BUDGET data() { return budget; }
     const node* next()const { return nfield; }
     const node* prev()const { return pfield; }  
     node* next(){ return nfield; }

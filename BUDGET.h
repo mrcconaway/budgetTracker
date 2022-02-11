@@ -59,6 +59,10 @@ public:
         outs << "\n" << display_category() << "\n"; 
         return; }
 
+
+public:
+    bool operator ==(const BUDGET& b2)const;
+
 private:
     float amount;
     DATE d;
@@ -69,4 +73,8 @@ private:
 inline std::ostream& operator <<(std::ostream& out, const BUDGET& b){
     b.output(out);
     return out;
+}
+
+inline bool BUDGET::operator ==(const BUDGET& b2)const{
+    return ( (amount == b2.amount) && (d == b2.d) && (c == b2.c) );
 }
