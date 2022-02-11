@@ -140,3 +140,10 @@ void list::display(std::ostream& outs)const
     return;
 }
 
+void list::display_node(std::ostream& outs = std::cout)const
+{
+    if(cursor != nullptr){
+        outs << cursor->data();
+    }
+    return;
+}

@@ -20,12 +20,18 @@ public:
     void remove(BUDGET target);
 
 public:
-    // accessor
+    // iterators
+
+
+public:
+    // outputs
     void display(std::ostream& outs = std::cout)const;
+    void display_node(std::ostream& outs = std::cout)const;
 
 
 
 private:
     node* head;
     node* tail;
+    node* cursor;
 };
