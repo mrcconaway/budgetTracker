@@ -21,17 +21,17 @@ public:
 
 public:
     // iterators
-
+    void set_cursor_forward()const;
+    void set_cursor_backward()const;
 
 public:
     // outputs
     void display(std::ostream& outs = std::cout)const;
-    void display_node(std::ostream& outs = std::cout)const;
+    void display_node(std::ostream& outs = std::cout, node* cursor = nullptr )const;
 
 
 
 private:
     node* head;
     node* tail;
-    const node* cursor_ptr;
 };

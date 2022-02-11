@@ -140,10 +140,22 @@ void list::display(std::ostream& outs)const
     return;
 }
 
-void list::display_node(std::ostream& outs)const
+void list::display_node(std::ostream& outs, node* cursor)const
 {
-    if(cursor_ptr != nullptr){
-        outs << cursor_ptr->data();
+    if(cursor != nullptr){
+        outs << cursor->data();
     }
     return;
+}
+
+
+// iterator functions
+void list::set_cursor_forward()const
+{
+    
+}
+
+void list::set_cursor_backward()const
+{
+
 }
