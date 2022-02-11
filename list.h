@@ -16,6 +16,8 @@ public: // BIG 3
 public:
     // mutators
     void add_item(BUDGET binp);
+    void add_at_head(BUDGET binp);
+    void remove(BUDGET target);
 
 public:
     // accessor

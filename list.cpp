@@ -91,6 +91,35 @@ void list::add_item(BUDGET binp)
     }
 }
 
+void list::add_at_head(BUDGET binp)
+{
+    node* cursor = head;
+    head = new node(binp, head, nullptr); // head = new node(data, nextptr, prevptr)
+    cursor->set_prev(head);
+}
+
+void list::remove(BUDGET target)
+{
+    node* forward = head;
+    node* backward;
+    if(head->data() == target){
+        node* rmptr = head;
+        head = head->next();
+    }
+    else{
+        while( forward != nullptr && forward->data() != target){
+            backward = forward;
+            forward = forward->next();
+        }
+        if( forward != nullptr){
+            backward->set_next( ( forward->next() ) );
+            node* cursor = forward->next();
+            cursor->set_prev(backward);
+            delete forward;
+        }
+    }
+}
+
 
 
 
@@ -109,3 +138,4 @@ void list::display(std::ostream& outs)const
     }
     return;
 }
+
