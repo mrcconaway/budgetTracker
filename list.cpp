@@ -94,11 +94,18 @@ void list::add_item(BUDGET binp)
 
 
 
-void list::display()const
+void list::display(std::ostream& outs)const
 {
     const node* ptr = head;
     while( ptr != nullptr){
-        std::cout << ptr->data() << std::endl;
-         ptr = ptr->next();
+        if( !(ptr->next() == nullptr) ){
+            outs << ptr->data() << std::endl;
+            ptr = ptr->next();
+        }
+        else{
+            outs << ptr->data();
+            ptr = ptr->next();
+        }
     }
+    return;
 }

@@ -19,7 +19,8 @@ public:
 
 public:
     // accessor
-    void display()const;
+    void display(std::ostream& outs = std::cout)const;
+
 
 
 private:

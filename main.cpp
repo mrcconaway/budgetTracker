@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "date.h"
 #include "month.h"
 #include "BUDGET.h"
@@ -22,7 +23,8 @@ int main()
     l.display();
 
     std::ofstream fout;
-    fout.open("test1.txt".c_str());
+    fout.open("test1.txt");
+    l.display(fout);
 
 
 
