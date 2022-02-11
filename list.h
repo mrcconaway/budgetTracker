@@ -33,5 +33,5 @@ public:
 private:
     node* head;
     node* tail;
-    node* cursor;
+    const node* cursor_ptr;
 };
