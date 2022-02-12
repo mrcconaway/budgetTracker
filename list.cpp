@@ -148,6 +148,23 @@ void list::display_node(std::ostream& outs, node* cursor)const
     return;
 }
 
+void list::display_head(std::ostream& outs)const
+{
+    if(head != nullptr){
+        outs << head->data();
+    }
+    return;
+}
+
+void list::display_tail(std::ostream& outs = std::cout)const
+{
+    if(tail != nullptr){
+        outs << head->data();
+    }
+    return;
+}
+
+
 
 // iterator functions
 void list::set_cursor_forward()const

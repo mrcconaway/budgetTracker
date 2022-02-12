@@ -27,6 +27,8 @@ public:
 public:
     // outputs
     void display(std::ostream& outs = std::cout)const;
+    void display_head(std::ostream& outs = std::cout)const;
+    void display_tail(std::ostream& outs = std::cout)const;
     void display_node(std::ostream& outs = std::cout, node* cursor = nullptr )const;
 
 
