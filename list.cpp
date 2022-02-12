@@ -156,7 +156,7 @@ void list::display_head(std::ostream& outs)const
     return;
 }
 
-void list::display_tail(std::ostream& outs = std::cout)const
+void list::display_tail(std::ostream& outs)const
 {
     if(tail != nullptr){
         outs << head->data();
