@@ -25,11 +25,15 @@ void save()
 
 void make_dir(std::vector<std::string> vinp)
 {
+    string dirTree = "";
     cout << "make_dir called " << endl; 
     for(int i = 0; i < vinp.size(); ++i){
         cout << vinp[i] << endl; 
+        dirTree += vinp[i];
+        dirTree += "/";
     }  
-    // fs::create_directories(sinp.c_str());
+    cout << dirTree << endl;
+    fs::create_directories(dirTree.c_str());
 
 }
 
