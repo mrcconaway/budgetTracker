@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include "node.h"
 #include "BUDGET.h"
 #include "date.h"
@@ -31,8 +32,13 @@ public:
     void display_tail(std::ostream& outs = std::cout)const;
     void display_node(std::ostream& outs = std::cout, node* cursor = nullptr )const;
 
+public:
+    // i/o to file
+    void save()const;
+    void make_dir(std::string sinp)const;
 
 
 private:
     node* head;
+    std::string saveFile = "/Data/data.txt";
 };

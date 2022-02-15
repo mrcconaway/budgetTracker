@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "node.h"
 #include "BUDGET.h"
 #include "date.h"
@@ -170,6 +171,29 @@ void list::display_tail(std::ostream& outs)const
     }
     return;
 }
+
+void list::save()const
+{
+    std::ofstream fout;
+    fout.open(saveFile.c_str());
+    if(fout.fail()){
+        std::cout << "ERROR";
+    }
+    else{
+        display(fout);
+        fout.close();
+    }
+}
+
+void make_dir(std::string sinp)
+{
+    std::string tmp = "";
+    for(int i = 0; i = sinp.size()-1; ++i){
+        tmp += sinp.size();
+    }
+}
+
+
 
 
 

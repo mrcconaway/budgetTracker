@@ -43,6 +43,8 @@ int main()
     std::cout << "\n\nTAIL\n";
     l.display_tail();
 
+    l.save();
+
 
     return 1;
 }
