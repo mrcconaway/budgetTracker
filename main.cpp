@@ -7,7 +7,7 @@
 using namespace std;
 namespace fs = filesystem;
 
-std::string saveFile = "/Test/TEST/test.txt";
+std::string saveFile = "/Test/Test1/Test2/test.txt";
 
 void save()
 {
@@ -23,43 +23,46 @@ void save()
 }
 
 
-void make_dir(std::string& sinp)
+void make_dir(std::vector<std::string> vinp)
 {
-    cout << "make_dir called " << endl;   
-    cout << sinp << endl; 
+    cout << "make_dir called " << endl; 
+    for(int i = 0; i < vinp.size(); ++i){
+        cout << vinp[i] << endl; 
+    }  
     // fs::create_directories(sinp.c_str());
 
 }
 
 string parse_Dir_and_File(std::string& dirInp){
-    string tmp = "";
-    string directories;
-    int backslashCount;
+    string tmp;
+    vector<string> dir;
+    int count = 0;
+
     for(int i = 0; i < dirInp.size(); ++i){
         if(dirInp[i] == '/' || dirInp[i] == '\\'){
-            backslashCount++;
-            if( (backslashCount % 2) == 0 ){ // this is a directory
-                backslashCount++; // all future directories will only have one additional slash 
-                                  // ie /test/"TEST/"test.txt
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!1 THIS DOES NOT WORK FOR DIRECTORY TREES // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                directories += tmp;
+            count++;
+            if( (count % 2) == 0){ // this is a directory
+                dir.push_back(tmp);
+                // cout << "directory: " << tmp << endl;
                 tmp = "";
+                count++;
             }
         }
         else{
             tmp += dirInp[i];
         }
     }
-
-    return tmp; // return file name
+    // cout << "filename: " << tmp << endl;
+    make_dir(dir);
+    return tmp;
 }
-
-
 
 int main()
 {
-    
+
+
     string file = parse_Dir_and_File(saveFile);
-    cout << file << endl;
+
+
     return 1;
 }
