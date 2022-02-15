@@ -20,7 +20,7 @@ void save(std::ofstream& fout)
 }
 
 
-void create_dir(std::vector<std::string> vinp)
+void make_dir(std::vector<std::string> vinp)
 {
     string dirTree = "";
     for(int i = 0; i < vinp.size(); ++i){
@@ -28,7 +28,6 @@ void create_dir(std::vector<std::string> vinp)
         dirTree += "/";
     }  
     std::filesystem::create_directories(dirTree.c_str());
-
 }
 
 // given and a directory path and file name (ie dir1/dir2/..), it parses the directories and returns the file name
