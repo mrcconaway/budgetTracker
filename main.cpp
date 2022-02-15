@@ -34,6 +34,8 @@ int main()
     // t3.output(std::cout);
 
     l.add_at_head(t3);
+    BUDGET t0;
+    l.add_item(t0);
 
     l.display();
     std::cout << "\n\nHEAD\n";

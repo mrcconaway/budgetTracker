@@ -8,7 +8,6 @@
 list::list()
 {
     head = nullptr;
-    tail = nullptr;
 }
 
 list::~list()
@@ -24,7 +23,7 @@ list::~list()
 list::list(const list& other)
 {
     if(other.head == nullptr){ // empty list check
-        head = tail = nullptr;
+        head = nullptr;
     }
     else{
         head = new node( other.head-> data() );
@@ -39,7 +38,6 @@ list::list(const list& other)
             destptr = destptr->next();
             srcptr = srcptr->next();
         }
-        tail = destptr;
     }
 }
 
@@ -56,7 +54,7 @@ list& list::operator =(const list& other)
         delete rmptr;
     }
     if(other.head == nullptr){ // empty list check
-        head = tail = nullptr;
+        head  = nullptr;
     }
     else{
         head = new node( other.head-> data() );
@@ -71,7 +69,6 @@ list& list::operator =(const list& other)
             destptr = destptr->next();
             srcptr = srcptr->next();
         }
-        tail = destptr;
     }
     return *this;
 }
@@ -81,7 +78,6 @@ void list::add_item(BUDGET binp)
 {
     if(head == nullptr){ // empty list
         head = new node(binp);
-        tail = head;
     }
     else{
         node* cursor = head;
@@ -89,18 +85,14 @@ void list::add_item(BUDGET binp)
             cursor = cursor->next();
         }
         cursor->set_next( new node(binp, nullptr, cursor) );
-        tail = cursor->next();
     }
 }
 
 void list::add_at_head(BUDGET binp)
 {
-    if(head == nullptr) // empty list
-    {
-        tail = head;
-    }
+
     node* cursor = head;
-    head = new node(binp, head, nullptr); // head = new node(data, nextptr, prevptr)
+    head = new node(binp, cursor, nullptr); // head = new node(data, nextptr, prevptr)
     cursor->set_prev(head);
 }
 
@@ -164,8 +156,17 @@ void list::display_head(std::ostream& outs)const
 
 void list::display_tail(std::ostream& outs)const
 {
-    if(tail != nullptr){
-        outs << head->data();
+
+
+    if(head == nullptr){ // empty list
+        return;
+    }
+    else{
+        node* cursor = head;
+        while(cursor-> next() != nullptr){
+            cursor = cursor->next();
+        }
+        outs << cursor->data();
     }
     return;
 }

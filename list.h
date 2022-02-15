@@ -35,5 +35,4 @@ public:
 
 private:
     node* head;
-    node* tail;
 };
