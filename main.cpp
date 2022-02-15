@@ -33,7 +33,9 @@ void make_dir(std::vector<std::string> vinp)
 
 }
 
-// given and a directory path and file name (ie dir1/dir2/) 
+// given and a directory path and file name (ie dir1/dir2/..), it parses the directories and returns the file name
+// Note: No directories should be given in the form /dir1/dir2/... so my logic could be reworked (the logic rn is designed so that
+// the exception is the rule)
 string parse_Dir_and_File(std::string dirInp){
     string tmp;
     vector<string> dir;
@@ -56,7 +58,7 @@ string parse_Dir_and_File(std::string dirInp){
         }
     }
     if(dir.size() != 0)
-        make_dir(dir);
+        make_dir(dir); // create directory tree
     return tmp;
 }
 
