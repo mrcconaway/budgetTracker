@@ -6,18 +6,10 @@
 
 using namespace std;
 
+std::string saveFile = "TEST/TEST/test.txt";
 
-void save(std::ofstream& fout)
-{
 
-    if(fout.fail()){
-        std::cout << "ERROR";
-    }
-    else{
-        fout << "TEST TEST TEST TEST" << std::endl;
-        fout.close();
-    }
-}
+
 
 
 void make_dir(std::vector<std::string> vinp)
@@ -59,15 +51,28 @@ void parse_Dir(std::string dirInp){
     return;
 }
 
+
+void save(std::ofstream& fout)
+{
+    fout << "TEST TEST TEST TEST" << std::endl;
+    fout.close();
+}
+
+void change_save_location(std::string&){
+    
+}
+
 int main()
 {
-    std::string saveFile = "TEST/TEST/test.txt";
 
     parse_Dir(saveFile);
-
     std::ofstream fout;
     fout.open(saveFile.c_str());
-    save(fout);
+    if(fout.fail()){
+        cout << "OH NO!";
+    }
+    else
+        save(fout);
 
     return 1;
 }
