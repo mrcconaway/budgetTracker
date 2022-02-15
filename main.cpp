@@ -20,7 +20,7 @@ void save(std::ofstream& fout)
 }
 
 
-void make_dir(std::vector<std::string> vinp)
+void create_dir(std::vector<std::string> vinp)
 {
     string dirTree = "";
     for(int i = 0; i < vinp.size(); ++i){
