@@ -52,27 +52,40 @@ void parse_Dir(std::string dirInp){
 }
 
 
-void save(std::ofstream& fout)
+void save()
 {
-    fout << "TEST TEST TEST TEST" << std::endl;
-    fout.close();
+    std::ofstream fout;
+    fout.open(saveFile.c_str());
+    if(fout.good()){
+        fout << "TEST TEST HELLO HELLO TEST TEST" << std::endl;
+        fout.close();
+    }
+    else{
+        cout << "OH NO!";
+    }
 }
 
-void change_save_location(std::string&){
-    
+// defaults to "TEST/TEST/test.txt"
+// NEED A WAY TO MAKE THESE CHANGES PERMANENT. LOOK INTO .conf files // 
+//                                                                   //
+void change_save_location(const std::string& s){
+    parse_Dir(s);
+    std::ofstream newOut;
+    newOut.open(s.c_str());
+    if(newOut.good()){
+        std::ifstream  src(saveFile.c_str());
+        newOut << src.rdbuf();
+        saveFile = s;
+    }
 }
 
 int main()
 {
 
     parse_Dir(saveFile);
-    std::ofstream fout;
-    fout.open(saveFile.c_str());
-    if(fout.fail()){
-        cout << "OH NO!";
-    }
-    else
-        save(fout);
+    save();
+    string t1 = "here.txt";
+    change_save_location(t1.c_str());
 
     return 1;
 }
