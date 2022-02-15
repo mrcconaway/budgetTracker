@@ -1,50 +1,57 @@
 #include <iostream>
 #include <fstream>
-#include "date.h"
-#include "month.h"
-#include "BUDGET.h"
-#include "node.h"
-#include "list.h"
+#include <string>
+#include <vector>
+
+using namespace std;
+
+std::string saveFile = "/Test/test.txt";
+
+void save()
+{
+    std::ofstream fout;
+    fout.open(saveFile.c_str());
+    if(fout.fail()){
+        std::cout << "ERROR";
+    }
+    else{
+        fout << "TEST TEST TEST TEST" << std::endl;
+        fout.close();
+    }
+}
+
+
+void make_dir(std::string sinp)
+{
+    cout << "make_dir called " << endl;    
+}
+
+string parse_Dir_and_File(std::string& dirInp){
+    string tmp = "";
+    int backslashCount;
+    for(int i = 0; i < dirInp.size(); ++i){
+        if(dirInp[i] == '/' || dirInp[i] == '\\'){
+            backslashCount++;
+            if( (backslashCount % 2) == 0 ){ // this is a directory
+                make_dir(tmp);
+                backslashCount++;
+                tmp = "";
+            }
+        }
+        else{
+            tmp += dirInp[i];
+        }
+    }
+
+    return tmp; // return file name
+}
+
+
 
 int main()
 {
-    list l;
-
-    DATE d1(22, 5, APRIL);
-    BUDGET t1;
-    t1.set_amount(55.55);
-    t1.set_category(HOUSING);
-    t1.set_date(d1);
-    l.add_item(t1);
-    // t1.output(std::cout);
-
-    BUDGET t2;
-    // t2.output(std::cout);
-    l.add_item(t2);
-    t2 = t1;
-    l.add_item(t2);
-
-    // t2.output(std::cout);
-
-    BUDGET t3;
-    d1.set_year(22);
-    t3.set_amount(200.00);
-    t3.set_category(GAS);
-    t3.set_date(d1);
-    // t3.output(std::cout);
-
-    l.add_at_head(t3);
-    BUDGET t0;
-    l.add_item(t0);
-
-    l.display();
-    std::cout << "\n\nHEAD\n";
-    l.display_head();
-    std::cout << "\n\nTAIL\n";
-    l.display_tail();
-
-    l.save();
-
-
+    
+    string file = parse_Dir_and_File(saveFile);
+    cout << file << endl;
     return 1;
 }
