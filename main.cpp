@@ -2,8 +2,10 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <filesystem>
 
 using namespace std;
+namespace fs = filesystem;
 
 std::string saveFile = "/Test/test.txt";
 
@@ -24,6 +26,8 @@ void save()
 void make_dir(std::string sinp)
 {
     cout << "make_dir called " << endl;    
+    fs::create_directories(sinp.c_str());
+
 }
 
 string parse_Dir_and_File(std::string& dirInp){
@@ -34,7 +38,8 @@ string parse_Dir_and_File(std::string& dirInp){
             backslashCount++;
             if( (backslashCount % 2) == 0 ){ // this is a directory
                 make_dir(tmp);
-                backslashCount++;
+                backslashCount++; // all future directories will only have one additional slash 
+                                  // ie /test/"TEST/"test.txt
                 tmp = "";
             }
         }
