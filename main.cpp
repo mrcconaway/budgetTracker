@@ -7,7 +7,7 @@
 using namespace std;
 namespace fs = filesystem;
 
-std::string saveFile = "/Test/Test1/Test2/test.txt";
+std::string saveFile = "Hello/Hello1/Hello2/test.txt";
 
 void save()
 {
@@ -26,28 +26,29 @@ void save()
 void make_dir(std::vector<std::string> vinp)
 {
     string dirTree = "";
-    cout << "make_dir called " << endl; 
     for(int i = 0; i < vinp.size(); ++i){
-        cout << vinp[i] << endl; 
+        cout << vinp[i] << endl;
         dirTree += vinp[i];
         dirTree += "/";
     }  
-    cout << dirTree << endl;
     fs::create_directories(dirTree.c_str());
 
 }
 
+// given and a directory path and file name (ie dir1/dir2/) 
 string parse_Dir_and_File(std::string& dirInp){
     string tmp;
     vector<string> dir;
     int count = 0;
-
+    if(dirInp[0] != '/' || dirInp[0] != '/'){ // in case a path is given in the form dir0/dir1/file.txt
+                                                  // converts it to the equivalent /dir0/dir1/file.txt so the logic works correctly
+        dirInp = "/" + dirInp;
+    }
     for(int i = 0; i < dirInp.size(); ++i){
         if(dirInp[i] == '/' || dirInp[i] == '\\'){
             count++;
             if( (count % 2) == 0){ // this is a directory
                 dir.push_back(tmp);
-                // cout << "directory: " << tmp << endl;
                 tmp = "";
                 count++;
             }
@@ -56,7 +57,6 @@ string parse_Dir_and_File(std::string& dirInp){
             tmp += dirInp[i];
         }
     }
-    // cout << "filename: " << tmp << endl;
     make_dir(dir);
     return tmp;
 }
