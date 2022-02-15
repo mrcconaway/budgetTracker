@@ -7,27 +7,25 @@
 using namespace std;
 namespace fs = filesystem;
 
-std::string saveFile = "Hello/Hello1/Hello2/test.txt";
 
-void save()
-{
-    std::ofstream fout;
-    fout.open(saveFile.c_str());
-    if(fout.fail()){
-        std::cout << "ERROR";
-    }
-    else{
-        fout << "TEST TEST TEST TEST" << std::endl;
-        fout.close();
-    }
-}
+// void save()
+// {
+//     std::ofstream fout;
+//     fout.open(saveFile.c_str());
+//     if(fout.fail()){
+//         std::cout << "ERROR";
+//     }
+//     else{
+//         fout << "TEST TEST TEST TEST" << std::endl;
+//         fout.close();
+//     }
+// }
 
 
 void make_dir(std::vector<std::string> vinp)
 {
     string dirTree = "";
     for(int i = 0; i < vinp.size(); ++i){
-        cout << vinp[i] << endl;
         dirTree += vinp[i];
         dirTree += "/";
     }  
@@ -36,7 +34,7 @@ void make_dir(std::vector<std::string> vinp)
 }
 
 // given and a directory path and file name (ie dir1/dir2/) 
-string parse_Dir_and_File(std::string& dirInp){
+string parse_Dir_and_File(std::string dirInp){
     string tmp;
     vector<string> dir;
     int count = 0;
@@ -57,15 +55,23 @@ string parse_Dir_and_File(std::string& dirInp){
             tmp += dirInp[i];
         }
     }
-    make_dir(dir);
+    if(dir.size() != 0)
+        make_dir(dir);
     return tmp;
 }
 
 int main()
 {
-
+    string saveFile = "TEST/TEST/test.txt";
 
     string file = parse_Dir_and_File(saveFile);
+    // save();
+
+    std::ofstream fout;
+    fout.open(saveFile.c_str());
+
+    fout << "help";
+    fout.close();
 
 
     return 1;
