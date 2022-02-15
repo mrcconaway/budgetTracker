@@ -79,8 +79,9 @@ list& list::operator =(const list& other)
 
 void list::add_item(BUDGET binp)
 {
-    if(head == nullptr){
+    if(head == nullptr){ // empty list
         head = new node(binp);
+        tail = head;
     }
     else{
         node* cursor = head;
@@ -88,11 +89,16 @@ void list::add_item(BUDGET binp)
             cursor = cursor->next();
         }
         cursor->set_next( new node(binp, nullptr, cursor) );
+        tail = cursor->next();
     }
 }
 
 void list::add_at_head(BUDGET binp)
 {
+    if(head == nullptr) // empty list
+    {
+        tail = head;
+    }
     node* cursor = head;
     head = new node(binp, head, nullptr); // head = new node(data, nextptr, prevptr)
     cursor->set_prev(head);
