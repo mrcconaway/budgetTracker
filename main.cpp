@@ -7,7 +7,7 @@
 using namespace std;
 namespace fs = filesystem;
 
-std::string saveFile = "/Test/test.txt";
+std::string saveFile = "/Test/TEST/test.txt";
 
 void save()
 {
@@ -23,23 +23,26 @@ void save()
 }
 
 
-void make_dir(std::string sinp)
+void make_dir(std::string& sinp)
 {
-    cout << "make_dir called " << endl;    
-    fs::create_directories(sinp.c_str());
+    cout << "make_dir called " << endl;   
+    cout << sinp << endl; 
+    // fs::create_directories(sinp.c_str());
 
 }
 
 string parse_Dir_and_File(std::string& dirInp){
     string tmp = "";
+    string directories;
     int backslashCount;
     for(int i = 0; i < dirInp.size(); ++i){
         if(dirInp[i] == '/' || dirInp[i] == '\\'){
             backslashCount++;
             if( (backslashCount % 2) == 0 ){ // this is a directory
-                make_dir(tmp);
                 backslashCount++; // all future directories will only have one additional slash 
                                   // ie /test/"TEST/"test.txt
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!1 THIS DOES NOT WORK FOR DIRECTORY TREES // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                directories += tmp;
                 tmp = "";
             }
         }
