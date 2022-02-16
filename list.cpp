@@ -131,6 +131,7 @@ void list::display(std::ostream& outs)const
     const node* ptr = head;
     while( ptr != nullptr){
         if( !(ptr->next() == nullptr) ){
+            // outs << ptr->data();
             outs << ptr->data() << std::endl;
             ptr = ptr->next();
         }
