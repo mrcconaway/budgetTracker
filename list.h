@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <filesystem>
 #include "node.h"
 #include "BUDGET.h"
 #include "date.h"
@@ -35,10 +37,12 @@ public:
 public:
     // i/o to file
     void save()const;
-    void make_dir(std::string sinp)const;
+    void change_save_location(const std::string& s);
+    void make_dir(std::vector<std::string> vinp);
+    void parse_Dir(std::string dirInp);
 
 
 private:
     node* head;
-    std::string saveFile = "/Data/data.txt";
+    std::string saveFile = "Data/data.txt";
 };

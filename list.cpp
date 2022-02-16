@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <filesystem>
 #include "node.h"
 #include "BUDGET.h"
 #include "date.h"
@@ -9,6 +11,7 @@
 list::list()
 {
     head = nullptr;
+    parse_Dir(saveFile);
 }
 
 list::~list()
@@ -176,23 +179,69 @@ void list::save()const
 {
     std::ofstream fout;
     fout.open(saveFile.c_str());
-    if(fout.fail()){
-        std::cout << "ERROR";
-    }
-    else{
+    if(fout.good()){
         display(fout);
         fout.close();
     }
-}
-
-void make_dir(std::string sinp)
-{
-    std::string tmp = "";
-    for(int i = 0; i = sinp.size()-1; ++i){
-        tmp += sinp.size();
+    else{
+        std::cout << "Error in save()!";
     }
 }
 
+// defaults to "TEST/TEST/test.txt"
+// NEED A WAY TO MAKE THESE CHANGES PERMANENT. LOOK INTO .conf files // 
+//                                                                   //
+void list::change_save_location(const std::string& s)
+{
+    parse_Dir(s);
+    std::ofstream newOut;
+    newOut.open(s.c_str());
+    if(newOut.good()){
+        std::ifstream  src(saveFile.c_str());
+        newOut << src.rdbuf();
+        saveFile = s;
+    }
+}
+
+void list::make_dir(std::vector<std::string> vinp)
+{
+    std::string dirTree = "";
+    for(int i = 0; i < vinp.size(); ++i){
+        dirTree += vinp[i];
+        dirTree += "/";
+    }  
+    std::filesystem::create_directories(dirTree.c_str());
+}
+
+// given and a directory path and file name (ie dir1/dir2/..), it parses the directories and returns the file name
+// Note: No directories should be given in the form /dir1/dir2/... so my logic could be reworked (the logic rn is designed so that
+// the exception is the rule)
+void list::parse_Dir(std::string dirInp)
+{
+    std::string tmp;
+    std::vector<std::string> dir;
+    int count = 0;
+    if(dirInp[0] != '/' || dirInp[0] != '/'){ // in case a path is given in the form dir0/dir1/file.txt
+                                                  // converts it to the equivalent /dir0/dir1/file.txt so the logic works correctly
+        dirInp = "/" + dirInp;
+    }
+    for(int i = 0; i < dirInp.size(); ++i){
+        if(dirInp[i] == '/' || dirInp[i] == '\\'){
+            count++;
+            if( (count % 2) == 0){ // this is a directory
+                dir.push_back(tmp);
+                tmp = "";
+                count++;
+            }
+        }
+        else{
+            tmp += dirInp[i];
+        }
+    }
+    if(dir.size() != 0)
+        make_dir(dir); // create directory tree
+    return;
+}
 
 
 

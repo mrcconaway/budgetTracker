@@ -37,12 +37,6 @@ int main()
     BUDGET t0;
     l.add_item(t0);
 
-    l.display();
-    std::cout << "\n\nHEAD\n";
-    l.display_head();
-    std::cout << "\n\nTAIL\n";
-    l.display_tail();
-
     l.save();
 
 
