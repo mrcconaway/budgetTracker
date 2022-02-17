@@ -251,10 +251,9 @@ void list::load()
     if(!finp.fail()){
         BUDGET tmp;
         finp >> tmp;
-
-
-
-
+    }
+    else{
+        std::cout << "Error in Load()" << std::endl; 
     }
 }
 
