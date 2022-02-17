@@ -11,7 +11,7 @@ int main()
     list l;
     l.load();
 
-    // l.display();
+    l.display();
 
     return 1;
 }

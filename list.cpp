@@ -254,8 +254,13 @@ void list::load()
             while(finp.peek() == '\n' || finp.peek() == '\r'){
                 finp.ignore();
             }
-            finp >> tmp;
-            add_item(tmp);
+            if(!finp.eof()){
+                finp >> tmp;
+                add_item(tmp);
+            }
+            else{
+                break;
+            }
         }while(!finp.eof() );
     }
     else{
