@@ -251,9 +251,12 @@ void list::load()
     if(!finp.fail()){
         BUDGET tmp;
         do{
+            while(finp.peek() == '\n' || finp.peek() == '\r'){
+                finp.ignore();
+            }
             finp >> tmp;
             add_item(tmp);
-        }while(!finp.eof());
+        }while(!finp.eof() );
     }
     else{
         std::cout << "Error in Load()" << std::endl; 

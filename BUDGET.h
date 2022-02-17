@@ -61,14 +61,14 @@ public:
         }
 
     void input(std::istream& ins){
-        while(ins.peek() == '\n' || ins.peek() == '\r'){
-            ins.ignore();
-        }
+
         std::string svalue; // for the leading $
         std::string scategory; // for the date
         // get amount
         getline(ins, svalue);
+        std::cout << svalue << std::endl; 
         svalue.erase(0,1);
+        std::cout << svalue << std::endl; 
         amount = std::stof(svalue);
 
         // get date
