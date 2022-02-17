@@ -250,12 +250,16 @@ void list::load()
     finp.open(saveFile.c_str());
     if(!finp.fail()){
         BUDGET tmp;
-        finp >> tmp;
+        do{
+            finp >> tmp;
+            add_item(tmp);
+        }while(!finp.eof());
     }
     else{
         std::cout << "Error in Load()" << std::endl; 
     }
 }
+
 
 // iterator functions
 void list::set_cursor_forward()const
