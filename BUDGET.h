@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <unordered_map>
 #include "date.h"
 #include "CATEGORY.h"
 
@@ -75,31 +76,28 @@ public:
         // get category
         // Look into using unordered_maps!
         getline(ins, scategory);
-        if(scategory == "GROCERY"){
-            c = GROCERY;
-        }
-        else if(scategory == "GAS"){
-            c = GAS;
-        }
-        else if(scategory == "ENTERTAINMENT"){
-            c = ENTERTAINMENT;
-        }
-        else if(scategory == "UTILITIES"){
-            c = UTILITIES;
-        }
-        else if(scategory == "SAVING"){
-            c = SAVING;
-        }
-        else if(scategory == "HOUSING"){
-            c = HOUSING;
+        auto search = StoC.find(scategory);
+        if( search != StoC.end()){
+            c = search->second;
         }
         else{
             c = UNKNOWN;
         }
-
-
         return;
     }
+
+    std::unordered_map<std::string, CATEGORY> StoC = 
+    {
+        {"GROCERY", GROCERY},
+        {"GAS", GAS},
+        {"ENTERTAINMENT",ENTERTAINMENT},
+        {"UTILITIES", UTILITIES},
+        {"SAVING",SAVING},
+        {"HOUSING",HOUSING},
+        {"UNKNOWN",UNKNOWN}
+    };
+
+
 
 public:
     bool operator ==(const BUDGET& b2)const;
