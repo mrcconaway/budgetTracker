@@ -255,6 +255,9 @@ void list::load()
             add_item(tmp);
         }while(!finp.eof());
     }
+    else{
+        std::cout << "Error in list::load()" << std::endl;
+    }
 }
 
 // iterator functions
