@@ -1,9 +1,10 @@
 #pragma once
-
-enum month{
+#include <iostream>
+enum MONTH
+{
     JANUARY = 1,
     FEBRUARY = 2,
-    MARCH = 3,
+    MARCH = 3, 
     APRIL = 4,
     MAY = 5,
     JUNE = 6,
@@ -13,5 +14,5 @@ enum month{
     OCTOBER = 10,
     NOVEMBER = 11,
     DECEMBER = 12,
-    DEFAULT = 0
+    NONE = 0
 };
