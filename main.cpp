@@ -12,6 +12,7 @@ int main()
     l.load();
 
     l.display();
+    l.save();
 
     return 1;
 }
