@@ -250,11 +250,10 @@ void list::load()
     finp.open(saveFile.c_str());
     if(!finp.fail()){
         BUDGET tmp;
-        finp >> tmp;
-
-
-
-
+        do{
+            finp >> tmp;
+            add_item(tmp);
+        }while(!finp.eof());
     }
 }
 
