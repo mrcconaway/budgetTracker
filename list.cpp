@@ -244,8 +244,19 @@ void list::parse_Dir(std::string dirInp)
     return;
 }
 
+void list::load()
+{
+    std::ifstream finp;
+    finp.open(saveFile.c_str());
+    if(!finp.fail()){
+        BUDGET tmp;
+        finp >> tmp;
 
 
+
+
+    }
+}
 
 // iterator functions
 void list::set_cursor_forward()const

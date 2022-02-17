@@ -57,8 +57,51 @@ public:
         outs << "$" << amount << "\n";
         d.output(outs); 
         outs << "\n" << display_category() << "\n"; 
-        return; }
+        return; 
+        }
 
+    void input(std::istream& ins){
+        while(ins.peek() == '\n' || ins.peek() == '\r'){
+            ins.ignore();
+        }
+        std::string svalue; // for the leading $
+        std::string scategory; // for the date
+        // get amount
+        getline(ins, svalue);
+        svalue.erase(0,1);
+        amount = std::stof(svalue);
+
+        // get date
+        ins >> d;
+        
+        // get category
+        // Look into using unordered_maps!
+        getline(ins, scategory);
+        if(scategory == "GROCERY"){
+            c = GROCERY;
+        }
+        else if(scategory == "GAS"){
+            c = GAS;
+        }
+        else if(scategory == "ENTERTAINMENT"){
+            c = ENTERTAINMENT;
+        }
+        else if(scategory == "UTILITIES"){
+            c = UTILITIES;
+        }
+        else if(scategory == "SAVING"){
+            c = SAVING;
+        }
+        else if(scategory == "HOUSING"){
+            c = HOUSING;
+        }
+        else{
+            c = UNKNOWN;
+        }
+
+
+        return;
+    }
 
 public:
     bool operator ==(const BUDGET& b2)const;
@@ -73,6 +116,12 @@ private:
 inline std::ostream& operator <<(std::ostream& out, const BUDGET& b){
     b.output(out);
     return out;
+}
+
+inline std::istream& operator >>(std::istream& ins, BUDGET& b)
+{
+    b.input(ins);
+    return ins;
 }
 
 inline bool BUDGET::operator ==(const BUDGET& b2)const{

@@ -41,6 +41,8 @@ public:
     void make_dir(std::vector<std::string> vinp);
     void parse_Dir(std::string dirInp);
 
+    void load();
+
 
 private:
     node* head;
