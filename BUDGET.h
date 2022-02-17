@@ -61,9 +61,7 @@ public:
         }
 
     void input(std::istream& ins){
-        while(ins.peek() == '\n' || ins.peek() == '\r'){
-            ins.ignore();
-        }
+
         std::string svalue; // for the leading $
         std::string scategory; // for the date
         // get amount

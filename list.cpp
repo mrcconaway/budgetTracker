@@ -251,14 +251,23 @@ void list::load()
     if(!finp.fail()){
         BUDGET tmp;
         do{
-            finp >> tmp;
-            add_item(tmp);
-        }while(!finp.eof());
+            while(finp.peek() == '\n' || finp.peek() == '\r'){
+                finp.ignore();
+            }
+            if(!finp.eof()){
+                finp >> tmp;
+                add_item(tmp);
+            }
+            else{
+                break;
+            }
+        }while(!finp.eof() );
     }
     else{
-        std::cout << "Error in list::load()" << std::endl;
+        std::cout << "Error in Load()" << std::endl; 
     }
 }
+
 
 // iterator functions
 void list::set_cursor_forward()const
